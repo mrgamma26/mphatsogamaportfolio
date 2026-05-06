@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
+import { useLanguage } from '../contexts/LanguageContext'
+import { translations } from '../translations'
 
 export default function Hero() {
+  const { language } = useLanguage()
+  const t = translations[language].hero
+
   return (
     <section style={{
       minHeight: '100vh',
@@ -25,6 +30,43 @@ export default function Hero() {
         }} 
       />
 
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        style={{
+          marginBottom: 'clamp(2rem, 4vw, 3rem)',
+        }}
+      >
+        <div style={{
+          width: 'clamp(120px, 20vw, 180px)',
+          height: 'clamp(120px, 20vw, 180px)',
+          borderRadius: '50%',
+          border: '4px solid var(--border)',
+          background: 'var(--bg-card)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          position: 'relative',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+        }}>
+          <img 
+            src="/profile.jpg" 
+            alt="Mphatso Gama"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+            onError={(e) => {
+              e.target.style.display = 'none'
+              e.target.parentElement.innerHTML += '<div style="font-size: 4rem; color: var(--text-muted)">👨💻</div>'
+            }}
+          />
+        </div>
+      </motion.div>
+
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -32,9 +74,9 @@ export default function Hero() {
         style={{
           display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
           padding: '0.35rem 1rem', borderRadius: '100px',
-          border: '1px solid #222', background: 'rgba(17,17,17,0.8)',
+          border: '1px solid var(--border)', background: 'var(--bg-card)',
           backdropFilter: 'blur(10px)',
-          fontSize: 'clamp(0.7rem, 2vw, 0.78rem)', color: '#888',
+          fontSize: 'clamp(0.7rem, 2vw, 0.78rem)', color: 'var(--text-secondary)',
           marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
           letterSpacing: '0.04em',
         }}
@@ -44,7 +86,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} 
         />
-        Available for opportunities
+        {t.available}
       </motion.div>
 
       <motion.h1 
@@ -54,13 +96,13 @@ export default function Hero() {
         style={{
           fontSize: 'clamp(2rem, 8vw, 5.5rem)',
           fontWeight: 700, lineHeight: 1.05,
-          letterSpacing: '-0.04em', color: '#f0f0f0',
+          letterSpacing: '-0.04em', color: 'var(--text-primary)',
           marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
           maxWidth: '90vw',
           wordBreak: 'break-word',
         }}
       >
-        Mphatso Gama
+        {t.title}
       </motion.h1>
 
       <motion.p 
@@ -69,7 +111,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         style={{
           fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)',
-          color: '#666',
+          color: 'var(--text-secondary)',
           maxWidth: 'min(520px, 90vw)',
           lineHeight: 1.7,
           marginBottom: 'clamp(2rem, 5vw, 2.5rem)',
@@ -77,7 +119,7 @@ export default function Hero() {
           padding: '0 1rem',
         }}
       >
-        ICT Professional & Full-Stack Developer — building secure, scalable digital solutions from Malawi.
+        {t.subtitle}
       </motion.p>
 
       <motion.div 
@@ -94,7 +136,7 @@ export default function Hero() {
         <MagneticButton href="#projects" style={{
           padding: 'clamp(0.7rem, 2vw, 0.85rem) clamp(1.6rem, 4vw, 2rem)',
           borderRadius: '10px',
-          background: '#f0f0f0', color: '#0a0a0a',
+          background: 'var(--text-primary)', color: 'var(--bg)',
           fontWeight: 600, fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
           transition: 'all 0.3s ease',
           border: 'none',
@@ -103,21 +145,22 @@ export default function Hero() {
         }}
           onMouseEnter={e => { e.target.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)' }}
           onMouseLeave={e => { e.target.style.boxShadow = '0 4px 14px rgba(0,0,0,0.25)' }}
-        >View Projects</MagneticButton>
+        >{t.viewProjects}</MagneticButton>
         <MagneticButton href="https://mail.google.com/mail/?view=cm&to=mphatsotobiasg@gmail.com&su=Hiring%20Inquiry"
            target="_blank" rel="noreferrer"
            style={{
             padding: 'clamp(0.7rem, 2vw, 0.85rem) clamp(1.6rem, 4vw, 2rem)',
             borderRadius: '10px',
-            border: '1px solid #333', color: '#f0f0f0',
-            background: 'transparent',
+            border: '1px solid var(--border)', color: 'var(--text-primary)',
+            background: 'var(--bg-card)',
+            backdropFilter: 'blur(10px)',
             fontWeight: 600, fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
             transition: 'all 0.3s ease',
             display: 'inline-block',
           }}
-          onMouseEnter={e => { e.target.style.borderColor = '#666'; e.target.style.background = 'rgba(255,255,255,0.05)' }}
-          onMouseLeave={e => { e.target.style.borderColor = '#333'; e.target.style.background = 'transparent' }}
-        >Get In Touch</MagneticButton>
+          onMouseEnter={e => { e.target.style.borderColor = 'var(--text-muted)' }}
+          onMouseLeave={e => { e.target.style.borderColor = 'var(--border)' }}
+        >{t.getInTouch}</MagneticButton>
       </motion.div>
 
       <motion.div 
@@ -127,20 +170,20 @@ export default function Hero() {
         style={{ display: 'flex', gap: 'clamp(0.8rem, 3vw, 1.2rem)', flexWrap: 'wrap', justifyContent: 'center' }}
       >
         {[
-          { label: 'GitHub', href: 'https://github.com/mrgamma26' },
-          { label: 'Email', href: 'mailto:mphatsotobiasg@gmail.com' },
+          { label: t.github, href: 'https://github.com/mrgamma26' },
+          { label: t.email, href: 'mailto:mphatsotobiasg@gmail.com' },
         ].map(({ label, href }) => (
           <MagneticButton key={label} href={href} target="_blank" rel="noreferrer" style={{
             display: 'flex', alignItems: 'center', gap: '0.5rem',
             padding: '0.6rem 1.2rem', borderRadius: '10px',
-            border: '1px solid #222', background: 'rgba(17,17,17,0.8)',
+            border: '1px solid var(--border)', background: 'var(--bg-card)',
             backdropFilter: 'blur(10px)',
-            color: '#888', transition: 'all 0.3s ease',
+            color: 'var(--text-secondary)', transition: 'all 0.3s ease',
             fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
             fontWeight: 500,
           }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#f0f0f0'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = '#222'; e.currentTarget.style.color = '#888'; e.currentTarget.style.background = 'rgba(17,17,17,0.8)' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--text-muted)'; e.currentTarget.style.color = 'var(--text-primary)' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
           >
             <span className="link-label">{label}</span>
           </MagneticButton>
@@ -157,7 +200,7 @@ export default function Hero() {
         }}
         style={{
           position: 'absolute', bottom: 'clamp(1.5rem, 4vw, 2.5rem)',
-          color: '#444', display: 'flex', flexDirection: 'column', alignItems: 'center',
+          color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', alignItems: 'center',
           gap: '0.4rem', fontSize: '0.75rem', letterSpacing: '0.08em',
         }}
       >

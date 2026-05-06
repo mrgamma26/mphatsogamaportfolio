@@ -11,7 +11,7 @@ export default function ThemeSwitcher() {
       position: 'fixed',
       top: '1rem',
       right: '1rem',
-      zIndex: 1000,
+      zIndex: 1001,
       display: 'flex',
       gap: '0.5rem',
     }}>
@@ -24,6 +24,7 @@ export default function ThemeSwitcher() {
           borderRadius: '8px',
           border: '1px solid var(--border)',
           background: 'var(--bg-card)',
+          backdropFilter: 'blur(10px)',
           color: 'var(--text-primary)',
           fontSize: '0.85rem',
           fontWeight: 600,
@@ -43,6 +44,7 @@ export default function ThemeSwitcher() {
           borderRadius: '8px',
           border: '1px solid var(--border)',
           background: 'var(--bg-card)',
+          backdropFilter: 'blur(10px)',
           color: 'var(--text-primary)',
           fontSize: '0.85rem',
           fontWeight: 600,
@@ -50,7 +52,7 @@ export default function ThemeSwitcher() {
           transition: 'all 0.3s ease',
         }}
       >
-        {language === 'en' ? 'EN' : 'NY'}
+        {language === 'en' ? 'Chichewa' : 'English'}
       </motion.button>
     </div>
   )
