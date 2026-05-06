@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import SectionWrapper from './SectionWrapper'
 import FadeIn from './FadeIn'
+import { useLanguage } from '../contexts/LanguageContext'
+import { translations } from '../translations'
 
 const techStack = [
   { name: 'React', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -11,6 +13,7 @@ const techStack = [
   { name: 'CSS3', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
   { name: 'Git', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
   { name: 'Node.js', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'MS Office', video: 'https://img.icons8.com/color/96/microsoft-office-2019.png' },
 ]
 
 const skills = {
@@ -20,15 +23,18 @@ const skills = {
 }
 
 export default function Skills() {
+  const { language } = useLanguage()
+  const t = translations[language].skills
+
   return (
     <SectionWrapper id="skills">
       <FadeIn>
-        <p style={{ fontSize: '0.78rem', color: '#6366f1', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>Skills</p>
-        <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: '0.75rem', color: '#f0f0f0' }}>
-          What I Work With
+        <p style={{ fontSize: '0.78rem', color: '#6366f1', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>{t.label}</p>
+        <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+          {t.title}
         </h2>
-        <p style={{ color: '#666', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '3rem', maxWidth: '480px' }}>
-          A toolkit built through real projects and hands-on experience.
+        <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '3rem', maxWidth: '480px' }}>
+          {t.subtitle}
         </p>
       </FadeIn>
 
@@ -45,8 +51,8 @@ export default function Skills() {
               style={{
                 padding: '1.5rem 1rem',
                 borderRadius: '14px',
-                border: '1px solid #222',
-                background: '#111',
+                border: '1px solid var(--border)',
+                background: 'var(--bg-card)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -81,7 +87,7 @@ export default function Skills() {
                   }}
                 />
               </motion.div>
-              <p style={{ fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', fontWeight: 600, color: '#d0d0d0', textAlign: 'center' }}>{name}</p>
+              <p style={{ fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', fontWeight: 600, color: 'var(--text-primary)', textAlign: 'center' }}>{name}</p>
             </motion.div>
           ))}
         </div>
@@ -96,24 +102,24 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              whileHover={{ y: -5, borderColor: '#333' }}
+              whileHover={{ y: -5, borderColor: 'var(--border)' }}
               style={{
                 padding: '1.5rem',
                 borderRadius: '14px',
-                border: '1px solid #222',
-                background: '#111',
+                border: '1px solid var(--border)',
+                background: 'var(--bg-card)',
               }}
             >
-              <p style={{ fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', color: '#888', fontWeight: 600, marginBottom: '1rem' }}>{category}</p>
+              <p style={{ fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', color: 'var(--text-secondary)', fontWeight: 600, marginBottom: '1rem' }}>{category}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {items.map(skill => (
                   <motion.span 
                     key={skill}
-                    whileHover={{ scale: 1.05, y: -2, backgroundColor: '#1a1a1a' }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     style={{
                       fontSize: 'clamp(0.7rem, 1.8vw, 0.75rem)', padding: '0.4rem 0.8rem',
-                      borderRadius: '8px', background: '#0d0d0d',
-                      border: '1px solid #1a1a1a', color: '#999',
+                      borderRadius: '8px', background: 'var(--bg)',
+                      border: '1px solid var(--border)', color: 'var(--text-muted)',
                     }}
                   >{skill}</motion.span>
                 ))}
