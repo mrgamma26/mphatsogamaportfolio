@@ -21,8 +21,8 @@ export const translations = {
     about: {
       label: 'About Me',
       title: 'ICT Professional & Developer',
-      description1: "I'm an ICT professional with a BSc (Honours) in Computer Science and hands-on experience in service desk coordination, full-stack development, and systems analysis.",
-      description2: 'Skilled in incident management, SLA compliance, stakeholder communication, and building secure digital solutions. Eager to contribute to ICT operations, systems support, or digital transformation roles in banking, financial services, or insurance.',
+      description1: "I build secure, full-stack web applications — from normalised database schemas and authenticated REST APIs to responsive React interfaces.",
+      description2: 'Based in Blantyre, Malawi. BSc Computer Science graduate actively looking for ICT, systems, or development roles where I can ship real things.',
       location: 'Location',
       locationValue: 'Blantyre, Malawi',
       degree: 'Degree',
@@ -84,8 +84,8 @@ export const translations = {
     about: {
       label: 'Za Ine',
       title: 'Katswiri wa ICT & Developer',
-      description1: 'Ndine katswiri wa ICT wokhala ndi BSc (Honours) mu Computer Science ndipo ndakhala ndikugwira ntchito yophatikizira service desk coordination, full-stack development, ndi systems analysis.',
-      description2: 'Ndili ndi luso mu incident management, SLA compliance, kulumikizana ndi anthu, ndi kupanga zida zotetezeka za digito. Ndikufuna kugwira ntchito mu ICT operations, systems support, kapena digital transformation mu mabanki, ndalama, kapena inshuwaransi.',
+      description1: 'Ndimanga mapulogalamu otetezeka a full-stack — kuchokera ku database schemas ndi REST APIs mpaka ku React interfaces zoyankha.',
+      description2: 'Ndikukhala ku Blantyre, Malawi. Ndili ndi BSc mu Computer Science ndipo ndikufuna ntchito za ICT, systems, kapena development.',
       location: 'Malo',
       locationValue: 'Blantyre, Malawi',
       degree: 'Digiri',

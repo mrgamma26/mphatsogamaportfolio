@@ -61,14 +61,8 @@ export default function Skills() {
               }}
             >
               <motion.div
-                animate={{ 
-                  rotateY: [0, 360],
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'linear'
-                }}
+                whileHover={{ rotateY: 180 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
                 style={{
                   width: '56px',
                   height: '56px',

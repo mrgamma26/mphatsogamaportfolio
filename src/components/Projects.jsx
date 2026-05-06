@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
 import SectionWrapper from './SectionWrapper'
 import FadeIn from './FadeIn'
+import { useTheme } from '../contexts/ThemeContext'
+import { useLanguage } from '../contexts/LanguageContext'
+import { translations } from '../translations'
 
 const projects = [
   {
@@ -27,15 +30,19 @@ const projects = [
 ]
 
 export default function Projects() {
+  const { theme } = useTheme()
+  const { language } = useLanguage()
+  const t = translations[language].projects
+
   return (
     <SectionWrapper id="projects">
       <FadeIn>
-        <p style={{ fontSize: '0.78rem', color: '#6366f1', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>Projects</p>
-        <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: '0.75rem', color: '#f0f0f0' }}>
-          Things I've Built
+        <p style={{ fontSize: '0.78rem', color: 'var(--accent)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>{t.label}</p>
+        <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', fontWeight: 700, letterSpacing: '-0.03em', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+          {t.title}
         </h2>
-        <p style={{ color: '#666', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '3rem', maxWidth: '480px' }}>
-          Real-world projects demonstrating full-stack capability and security-first thinking.
+        <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)', marginBottom: '3rem', maxWidth: '480px' }}>
+          {t.subtitle}
         </p>
       </FadeIn>
 
@@ -52,12 +59,16 @@ export default function Projects() {
                 display: 'block',
                 padding: 'clamp(2rem, 5vw, 2.5rem)',
                 borderRadius: '16px',
-                border: '1px solid #222',
-                background: '#111',
+                border: '1px solid var(--border)',
+                background: 'var(--bg-card)',
+                backdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
                 position: 'relative',
                 textDecoration: 'none',
                 overflow: 'hidden',
+                transition: 'border-color 0.2s',
               }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--text-muted)'}
+              onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
             >
               {project.featured && (
                 <span style={{
@@ -67,25 +78,25 @@ export default function Projects() {
                   fontSize: '0.7rem',
                   padding: '0.3rem 0.8rem',
                   borderRadius: '100px',
-                  border: '1px solid #333',
-                  background: '#1a1a1a',
-                  color: '#888',
+                  border: '1px solid var(--border)',
+                  background: 'var(--bg)',
+                  color: 'var(--text-muted)',
                   letterSpacing: '0.06em',
                   fontWeight: 600,
                 }}>Featured</span>
               )}
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <h3 style={{ 
-                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', 
-                  fontWeight: 700, 
-                  color: '#f0f0f0', 
+                <h3 style={{
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
+                  fontWeight: 700,
+                  color: 'var(--text-primary)',
                   marginBottom: '0.75rem',
                   letterSpacing: '-0.02em'
                 }}>{project.name}</h3>
-                <p style={{ 
-                  fontSize: 'clamp(0.9rem, 2vw, 1rem)', 
-                  color: '#888', 
+                <p style={{
+                  fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                  color: 'var(--text-secondary)',
                   lineHeight: 1.7,
                   maxWidth: '800px'
                 }}>{project.description}</p>
@@ -93,29 +104,29 @@ export default function Projects() {
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
                 {project.stack.map(tech => (
-                  <span 
+                  <span
                     key={tech}
                     style={{
-                      fontSize: 'clamp(0.7rem, 1.8vw, 0.75rem)', 
+                      fontSize: 'clamp(0.7rem, 1.8vw, 0.75rem)',
                       padding: '0.4rem 0.9rem',
-                      borderRadius: '8px', 
-                      background: '#0d0d0d',
-                      border: '1px solid #1a1a1a', 
-                      color: '#999',
+                      borderRadius: '8px',
+                      background: 'var(--bg)',
+                      border: '1px solid var(--border)',
+                      color: 'var(--text-muted)',
                     }}
                   >{tech}</span>
                 ))}
               </div>
 
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
                 gap: '0.5rem',
                 fontSize: 'clamp(0.8rem, 2vw, 0.85rem)',
-                color: '#666',
+                color: 'var(--text-muted)',
                 fontWeight: 500,
               }}>
-                <span>View Project</span>
+                <span>{t.viewProject}</span>
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}

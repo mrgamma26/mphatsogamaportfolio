@@ -39,8 +39,8 @@ export default function Hero() {
         }}
       >
         <div style={{
-          width: 'clamp(120px, 20vw, 180px)',
-          height: 'clamp(120px, 20vw, 180px)',
+          width: 'clamp(180px, 25vw, 260px)',
+          height: 'clamp(180px, 25vw, 260px)',
           borderRadius: '50%',
           border: '4px solid var(--border)',
           background: 'var(--bg-card)',

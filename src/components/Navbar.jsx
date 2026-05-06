@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import MagneticButton from './MagneticButton'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -59,7 +58,7 @@ export default function Navbar() {
             display: 'none', background: 'none', border: 'none',
             color: 'var(--text-primary)', padding: '0.5rem',
           }}>
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? '✕' : '☰'}
           </button>
 
           <div style={{ display: 'none', gap: '2rem', flex: 1, justifyContent: 'center' }} className="nav-desktop">
