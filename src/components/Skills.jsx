@@ -3,20 +3,20 @@ import SectionWrapper from './SectionWrapper'
 import FadeIn from './FadeIn'
 
 const techStack = [
-  { name: 'React', color: '#61DAFB', desc: 'Frontend' },
-  { name: 'JavaScript', color: '#F7DF1E', desc: 'Language' },
-  { name: 'PHP 8.1', color: '#777BB4', desc: 'Backend' },
-  { name: 'MySQL', color: '#4479A1', desc: 'Database' },
-  { name: 'HTML5', color: '#E34F26', desc: 'Markup' },
-  { name: 'CSS3', color: '#1572B6', desc: 'Styling' },
-  { name: 'Git', color: '#F05032', desc: 'Version Control' },
-  { name: 'REST APIs', color: '#22c55e', desc: 'Integration' },
+  { name: 'React', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'JavaScript', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'PHP', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+  { name: 'MySQL', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'HTML5', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'CSS3', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'Git', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+  { name: 'Node.js', video: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
 ]
 
 const skills = {
-  'Service Desk': { items: ['Incident Management', 'SLA Monitoring', 'ITIL Principles', 'Escalation', 'Helpdesk Ticketing', 'Performance Reporting'] },
   'Security': { items: ['RBAC', 'HMAC Auth', 'Bcrypt', 'SQL Injection Prevention', 'Prepared Statements'] },
-  'Operations': { items: ['IT Asset Management', 'Team Scheduling', 'Stakeholder Communication', 'Microsoft Office Suite'] },
+  'Development': { items: ['REST APIs', 'SPA Architecture', 'State Management', 'Responsive Design', 'API Integration'] },
+  'Tools': { items: ['Git', 'VS Code', 'Postman', 'Chrome DevTools', 'npm/Composer'] },
 }
 
 export default function Skills() {
@@ -34,7 +34,7 @@ export default function Skills() {
 
       <FadeIn delay={0.1}>
         <div className="tech-grid">
-          {techStack.map(({ name, color, desc }, i) => (
+          {techStack.map(({ name, video }, i) => (
             <motion.div 
               key={name}
               initial={{ opacity: 0, y: 20 }}
@@ -50,29 +50,38 @@ export default function Skills() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '0.5rem',
+                gap: '0.75rem',
                 cursor: 'default',
               }}
             >
-              <div style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '12px',
-                background: `${color}15`,
-                border: `1px solid ${color}30`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <div style={{ 
-                  width: '24px', 
-                  height: '24px', 
-                  borderRadius: '6px',
-                  background: color,
-                }} />
-              </div>
+              <motion.div
+                animate={{ 
+                  rotateY: [0, 360],
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+                style={{
+                  width: '56px',
+                  height: '56px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img 
+                  src={video} 
+                  alt={name}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                  }}
+                />
+              </motion.div>
               <p style={{ fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', fontWeight: 600, color: '#d0d0d0', textAlign: 'center' }}>{name}</p>
-              <p style={{ fontSize: 'clamp(0.7rem, 1.5vw, 0.75rem)', color: '#555', textAlign: 'center' }}>{desc}</p>
             </motion.div>
           ))}
         </div>

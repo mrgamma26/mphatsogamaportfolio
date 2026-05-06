@@ -3,15 +3,15 @@ import FadeIn from './FadeIn'
 
 const experience = [
   {
-    role: 'ICT Support & Service Desk Intern',
-    company: 'All Peoples Innovation Hub',
-    location: 'Blantyre',
-    period: 'Feb 2026 – Present',
+    role: 'Full-Stack Developer',
+    company: 'Freelance',
+    location: 'Remote',
+    period: '2023 – Present',
     points: [
-      'Central point of contact for all ICT incidents; logged, tracked, and escalated tickets daily against SLA targets through to closure.',
-      'Compiled monthly Service Desk performance reports for management covering SLA compliance rates and improvement recommendations.',
-      'Coordinated team scheduling, workload allocation, and vendor-user resolution meetings, reducing average incident resolution times.',
-      'Deployed and security-hardened desktops, laptops, and peripherals; maintained accurate IT consumables inventory.',
+      'Developed secure, scalable web applications using React, PHP, and MySQL with focus on authentication and data protection.',
+      'Implemented REST APIs with HMAC-SHA256 authentication and role-based access control for multi-user platforms.',
+      'Built responsive SPAs with modern state management patterns and optimized performance.',
+      'Designed normalized database schemas and implemented SQL injection prevention through prepared statements.',
     ],
   },
 ]
