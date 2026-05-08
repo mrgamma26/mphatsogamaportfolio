@@ -2,16 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <!-- Primary Meta Tags -->
     <title>Mphatso Gama — ICT Professional & Full-Stack Developer | Portfolio</title>
     <meta name="title" content="Mphatso Gama — ICT Professional & Full-Stack Developer" />
     <meta name="description" content="BSc (Hons) Computer Science graduate specializing in full-stack development, service desk coordination, and secure digital solutions. Based in Malawi, available for international opportunities." />
-    <meta name="keywords" content="Full-Stack Developer, ICT Professional, React Developer, PHP Developer, Systems Analyst, Malawi Developer, Service Desk, ITIL, Software Engineer" />
+    <meta name="keywords" content="Full-Stack Developer, ICT Professional, React Developer, PHP Developer, Systems Analyst, Malawi Developer, Service Desk, ITIL, Software Engineer, Web Developer, Database Design, Cloud Computing" />
     <meta name="author" content="Mphatso Gama" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -19,6 +22,11 @@
     <meta property="og:title" content="Mphatso Gama — ICT Professional & Full-Stack Developer" />
     <meta property="og:description" content="BSc (Hons) Computer Science graduate specializing in full-stack development, service desk coordination, and secure digital solutions." />
     <meta property="og:image" content="https://my-portfolio-omega-lovat-90.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mphatso Gama Portfolio Preview" />
+    <meta property="og:site_name" content="Mphatso Gama Portfolio" />
+    <meta property="og:locale" content="en_US" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -26,11 +34,55 @@
     <meta property="twitter:title" content="Mphatso Gama — ICT Professional & Full-Stack Developer" />
     <meta property="twitter:description" content="BSc (Hons) Computer Science graduate specializing in full-stack development, service desk coordination, and secure digital solutions." />
     <meta property="twitter:image" content="https://my-portfolio-omega-lovat-90.vercel.app/og-image.png" />
+    <meta property="twitter:image:alt" content="Mphatso Gama Portfolio Preview" />
+    <meta property="twitter:creator" content="@mphatsogama" />
     
-    <!-- Fonts -->
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="msapplication-TileColor" content="#6366f1" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MG Portfolio" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://my-portfolio-omega-lovat-90.vercel.app/" />
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="https://my-portfolio-omega-lovat-90.vercel.app/" />
+    <link rel="alternate" hreflang="ny" href="https://my-portfolio-omega-lovat-90.vercel.app/?lang=ny" />
+    <link rel="alternate" hreflang="x-default" href="https://my-portfolio-omega-lovat-90.vercel.app/" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    
+    <!-- Fonts with optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/profile.jpg" as="image" type="image/jpeg" />
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//github.com" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- Performance Hints -->
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -39,9 +91,12 @@
       "@type": "Person",
       "name": "Mphatso Gama",
       "jobTitle": "ICT Professional & Full-Stack Developer",
+      "description": "BSc (Hons) Computer Science graduate specializing in full-stack development, service desk coordination, and secure digital solutions.",
       "url": "https://my-portfolio-omega-lovat-90.vercel.app",
+      "image": "https://my-portfolio-omega-lovat-90.vercel.app/profile.jpg",
       "sameAs": [
-        "https://github.com/mphatso-gama"
+        "https://github.com/mrgamma26",
+        "https://linkedin.com/in/mphatso-gama"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -49,15 +104,60 @@
         "addressCountry": "Malawi"
       },
       "email": "mphatsotobiasg@gmail.com",
+      "telephone": "+265994310305",
       "alumniOf": {
         "@type": "EducationalOrganization",
-        "name": "NACIT"
+        "name": "NACIT",
+        "description": "National College of Information Technology"
       },
-      "knowsAbout": ["React", "PHP", "MySQL", "JavaScript", "Full-Stack Development", "ICT Support", "ITIL", "Service Desk Management"]
+      "knowsAbout": [
+        "React", "PHP", "MySQL", "JavaScript", "TypeScript", "Node.js",
+        "Full-Stack Development", "ICT Support", "ITIL", "Service Desk Management",
+        "Database Design", "Cloud Computing", "AWS", "Docker", "Git"
+      ],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "BSc (Hons) Computer Science",
+        "credentialCategory": "degree",
+        "educationalLevel": "Bachelor's Degree"
+      },
+      "workLocation": {
+        "@type": "Place",
+        "name": "Remote/Blantyre, Malawi"
+      },
+      "seeks": {
+        "@type": "Demand",
+        "name": "ICT Professional Position",
+        "description": "Seeking opportunities in full-stack development, systems analysis, or ICT support roles"
+      }
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Mphatso Gama Portfolio",
+      "description": "Professional portfolio showcasing ICT and full-stack development expertise",
+      "url": "https://my-portfolio-omega-lovat-90.vercel.app",
+      "author": {
+        "@type": "Person",
+        "name": "Mphatso Gama"
+      },
+      "inLanguage": ["en", "ny"],
+      "copyrightYear": "2024",
+      "genre": "Portfolio"
     }
     </script>
   </head>
   <body>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; background: #f3f4f6; color: #374151;">
+        <h1>JavaScript Required</h1>
+        <p>This portfolio requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
