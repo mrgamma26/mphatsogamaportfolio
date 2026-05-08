@@ -43,7 +43,6 @@ export default function Experience() {
               {t.experience.title}
             </h2>
           </div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', fontWeight: 500 }}>{experience.length} {language === 'en' ? 'role' : 'ntchito'}{experience.length > 1 ? 's' : ''}</span>
         </div>
       </FadeIn>
 
@@ -79,7 +78,7 @@ export default function Experience() {
                     padding: 'clamp(1.25rem, 3vw, 1.5rem)',
                     borderRadius: '12px',
                     border: `1px solid ${theme === 'dark' ? '#1e1e1e' : '#e5e5e5'}`,
-                    background: theme === 'dark' ? '#111' : 'rgba(255, 255, 255, 0.7)',
+                    background: theme === 'dark' ? '#111' : '#ffffff',
                     backdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
                     transition: 'border-color 0.2s, transform 0.2s',
                   }}

@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sun, Moon, Monitor, Palette, Settings } from 'lucide-react'
+import { Sun, Moon, Monitor, Settings, Languages, Globe } from 'lucide-react'
 import useAppStore from '../store/useAppStore'
 
 const themes = [
   { key: 'dark', label: 'Dark', icon: Moon },
   { key: 'light', label: 'Light', icon: Sun },
   { key: 'auto', label: 'Auto', icon: Monitor }
+]
+
+const languages = [
+  { key: 'en', label: 'English', flag: '🇺🇸' },
+  { key: 'ny', label: 'Chichewa', flag: '🇲🇼' }
 ]
 
 const accentColors = [
@@ -19,7 +24,7 @@ const accentColors = [
 ]
 
 export default function ThemeSwitcherEnhanced() {
-  const { theme, toggleTheme } = useAppStore()
+  const { theme, language, setLanguage } = useAppStore()
   const [isOpen, setIsOpen] = useState(false)
   const [currentTheme, setCurrentTheme] = useState(theme)
   const [accentColor, setAccentColor] = useState('#6366f1')
@@ -61,7 +66,10 @@ export default function ThemeSwitcherEnhanced() {
   const handleThemeChange = (newTheme) => {
     setCurrentTheme(newTheme)
     localStorage.setItem('theme', newTheme)
-    setIsOpen(false)
+  }
+
+  const handleLanguageChange = (newLang) => {
+    setLanguage(newLang)
   }
 
   const getCurrentIcon = () => {
@@ -73,37 +81,72 @@ export default function ThemeSwitcherEnhanced() {
   }
 
   const CurrentIcon = getCurrentIcon()
+  const currentLanguageFlag = languages.find(l => l.key === language)?.flag || '🇺🇸'
 
   return (
-    <div style={{ position: 'relative' }}>
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        style={{
-          position: 'fixed',
-          top: '50%',
-          right: '2rem',
-          transform: 'translateY(-50%)',
-          zIndex: 100,
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          border: '1px solid var(--border)',
-          background: 'var(--bg-card)',
-          backdropFilter: 'blur(10px)',
-          color: 'var(--text-primary)',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          transition: 'all 0.3s ease'
-        }}
-        aria-label="Theme settings"
-      >
-        <CurrentIcon size={20} />
-      </motion.button>
+    <>
+      {/* Mobile-optimized floating buttons */}
+      <div style={{
+        position: 'fixed',
+        bottom: '2rem',
+        right: '1rem',
+        zIndex: 100,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.75rem'
+      }}>
+        {/* Language Switcher Button */}
+        <motion.button
+          onClick={() => handleLanguageChange(language === 'en' ? 'ny' : 'en')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '50%',
+            border: '1px solid var(--border)',
+            background: 'var(--bg-card)',
+            backdropFilter: 'blur(10px)',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transition: 'all 0.3s ease',
+            fontSize: '1.2rem'
+          }}
+          aria-label={`Switch to ${language === 'en' ? 'Chichewa' : 'English'}`}
+          title={`Switch to ${language === 'en' ? 'Chichewa' : 'English'}`}
+        >
+          {currentLanguageFlag}
+        </motion.button>
+
+        {/* Theme Settings Button */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '50%',
+            border: '1px solid var(--border)',
+            background: 'var(--bg-card)',
+            backdropFilter: 'blur(10px)',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transition: 'all 0.3s ease'
+          }}
+          aria-label="Theme settings"
+        >
+          <CurrentIcon size={20} />
+        </motion.button>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
@@ -125,17 +168,18 @@ export default function ThemeSwitcherEnhanced() {
 
             {/* Theme Panel */}
             <motion.div
-              initial={{ opacity: 0, x: 100, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 100, scale: 0.95 }}
+              initial={{ opacity: 0, y: 100, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 100, scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="theme-switcher-panel"
               style={{
                 position: 'fixed',
-                top: '50%',
-                right: '5rem',
-                transform: 'translateY(-50%)',
+                bottom: '8rem',
+                right: '1rem',
                 zIndex: 99,
-                width: '280px',
+                width: '320px',
+                maxWidth: 'calc(100vw - 2rem)',
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border)',
                 borderRadius: '16px',
@@ -161,6 +205,53 @@ export default function ThemeSwitcherEnhanced() {
                 }}>
                   Theme Settings
                 </h3>
+              </div>
+
+              {/* Language Selection */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h4 style={{
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  color: 'var(--text-primary)',
+                  marginBottom: '0.75rem'
+                }}>
+                  Language
+                </h4>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '0.5rem'
+                }}>
+                  {languages.map(lang => {
+                    const isActive = language === lang.key
+                    
+                    return (
+                      <motion.button
+                        key={lang.key}
+                        onClick={() => handleLanguageChange(lang.key)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        style={{
+                          padding: '0.75rem',
+                          borderRadius: '8px',
+                          border: `1px solid ${isActive ? 'var(--accent)' : 'var(--border)'}`,
+                          background: isActive ? 'var(--accent)22' : 'transparent',
+                          color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: 500,
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        <span style={{ fontSize: '1rem' }}>{lang.flag}</span>
+                        {lang.label}
+                      </motion.button>
+                    )
+                  })}
+                </div>
               </div>
 
               {/* Theme Selection */}
@@ -316,6 +407,6 @@ export default function ThemeSwitcherEnhanced() {
           }
         }
       `}</style>
-    </div>
+    </>
   )
 }
